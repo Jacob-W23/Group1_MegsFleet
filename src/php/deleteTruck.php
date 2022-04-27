@@ -22,7 +22,7 @@ if (isset($_POST['dotID']) && $auth)
     }
     else
     {
-        $stmt = $connection->prepare("DELETE FROM vehicles WHERE dotid=?"); //modify as needed
+        $stmt = $connection->prepare("DELETE FROM vehicles WHERE DOTID=?");
         $stmt->bind_param("s", $dotID);
 
         if ($stmt->execute())

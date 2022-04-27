@@ -11,7 +11,7 @@ if($conn->connect_error) {
     $res["status"] = "error";
     $res["status_message"] = "MySQL Connection Error";
 } else {
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username=?");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE fName=?");
 
     $stmt->bind_param("s",$username);
 
@@ -22,16 +22,16 @@ if($conn->connect_error) {
 
         if($rows >= 1) {
             foreach($result as $item) {
-                if(password_verify($password,$item["UserPassword"])) {
+                if(password_verify($password,$item["uPassword"])) {
                     session_start();
-                    $_SESSION["role"] = $item["UserRole"];
-                    $_SESSION["username"] = $item["UserName"];
+                    $_SESSION["role"] = $item["Role"];
+                    $_SESSION["username"] = $item["fName"];
                     $_SESSION["id"] = $item["UserID"];
                     $_SESSION["auth"] = true;
 
                     $res["status"] = "Success";
-                    $res["role"] = $item["UserRole"];
-                    $res["username"] = $item["UserName"];
+                    $res["role"] = $item["Role"];
+                    $res["username"] = $item["fName"];
                     $res["id"] = $item["UserID"];
                     $res["session"] = session_id();
                     $res["auth"] = true;

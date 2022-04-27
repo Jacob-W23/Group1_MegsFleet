@@ -56,7 +56,7 @@
           tge3ua: index % 2 == 1,
           tg7btt: index % 2 == 0,
         }" >
-            {{ Truck.LastMaintenenceMileage | formatNumber }}
+            {{ Truck.LastMaintMileage | formatNumber }}
           </td>
           <td v-bind:class="{
           tge3ua: index % 2 == 1,
@@ -299,7 +299,7 @@ export default {
       var vm = this;
       
       formdata.append("session", vm.session);
-      fetch("http://localhost/src/php/getTrucks.php", {
+      fetch("http://localhost/Group1_MegsFleet/src/php/getTrucks.php", {
         method: "post",
         body: formdata
       })
@@ -321,7 +321,7 @@ export default {
             formdata.append("miles",vm.truckForm.CurrentMileage);
             formdata.append("status",vm.truckForm.Status);
             formdata.append("maintenance",vm.truckForm.LastMaintenenceMileage);
-            fetch("http://localhost/src/php/addTruck.php", {
+            fetch("http://localhost/Group1_MegsFleet/src/php/addTruck.php", {
                 method: "post",
                 body: formdata
             })
@@ -348,7 +348,7 @@ export default {
       const formdata = new FormData();
       formdata.append("session", vm.session);
       formdata.append("dotID",store.state.Trucks[store.state.editTruckIndex].DOTID);
-      fetch("http://localhost/src/php/deleteTruck.php", {
+      fetch("http://localhost/Group1_MegsFleet/src/php/deleteTruck.php", {
         method: "post",
         body: formdata
       })
@@ -386,7 +386,7 @@ export default {
         formdata.append("miles",vm.truckForm.CurrentMileage);
         formdata.append("status",vm.truckForm.Status);
         formdata.append("maintenance",vm.truckForm.LastMaintenenceMileage);
-        fetch("http://localhost/src/php/updateTruck.php", {
+        fetch("http://localhost/Group1_MegsFleet/src/php/updateTruck.php", {
           method: "post",
           body: formdata
         })

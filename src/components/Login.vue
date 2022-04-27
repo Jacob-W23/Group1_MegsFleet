@@ -47,7 +47,7 @@ export default {
         formdata.append("username",this.username);
         formdata.append("password",this.password);
       
-        fetch("http://localhost/src/php/login.php", {
+        fetch("http://localhost/Group1_MegsFleet/src/php/login.php", {
           method: "post",
           body: formdata
           })

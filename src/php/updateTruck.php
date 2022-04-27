@@ -13,7 +13,6 @@ $auth = $_SESSION["auth"];
 if ($auth && validateInput())
 {
     $dotId = $_POST['dotID'];
-    $year = $_POST['year'];
     $type = $_POST['type'];
     $make = $_POST['make'];
     $model = $_POST['model'];
@@ -31,8 +30,8 @@ if ($auth && validateInput())
     }
     else
     {
-        $stmt = $connection->prepare("UPDATE vehicles SET dotid=?, year=?, type=?, make=?, model=?, currentmileage=?, status=?, lastmaintenencemileage=? WHERE dotid=?");
-        $stmt->bind_param("sssssssss", $dotId, $year, $type, $make, $model, $miles, $status, $maint, $dotId);
+        $stmt = $connection->prepare("UPDATE vehicles SET DOTID=?, Type=?, Make=?, Model=?, CurrentMileage=?, Status=?, LastMaintMileage=? WHERE DOTID=?");
+        $stmt->bind_param("sssssssss", $dotId, $type, $make, $model, $miles, $status, $maint, $dotId);
 
         if ($stmt->execute())
         {
