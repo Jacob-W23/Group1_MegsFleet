@@ -10,7 +10,7 @@ session_start();
 
 $auth = $_SESSION["auth"];
 
-if ($auth && validateInput() && isset($_POST['dotID']))
+if ($auth && validateInput())
 {
     $dotId = $_POST['dotID'];
     $year = $_POST['year'];
