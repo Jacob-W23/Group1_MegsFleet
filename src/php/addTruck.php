@@ -23,7 +23,7 @@ if (validateInput() && $auth) {
     $connection = new mysqli($hn, $un, $pw, $db);
 
     if ($connection->connect_error) {
-        $response['status'] = "error";
+        $response['outcome'] = "error";
         $response['err-msg'] = "Could not connect to database";
     } else {
         $stmt = $connection->prepare("INSERT INTO vehicles VALUES(?,?,?,?,?,?,?,?)");
